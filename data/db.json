@@ -55,8 +55,8 @@
       "id": 7
     },
     {
-      "front": "hello",
-      "back": "Goodbye",
+      "front": "Lets put something:",
+      "back": "useful here",
       "deckId": 2,
       "id": 8
     },
@@ -67,10 +67,10 @@
       "id": 11
     },
     {
-      "front": "look mom...",
-      "back": "no hands",
+      "front": "hello",
+      "back": "Goodbye",
       "deckId": 3,
-      "id": 12
+      "id": 13
     }
   ]
 }

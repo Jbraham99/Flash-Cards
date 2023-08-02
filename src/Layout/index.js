@@ -47,7 +47,7 @@ console.log(path)
           </Route>
 
           <Route path="/decks/:deckId/cards/:cardId/edit">
-            <EditCard />
+            <EditCard data={data} />
           </Route>
 
           <Route path="/decks/:deckId/edit">
