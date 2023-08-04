@@ -4,7 +4,7 @@ import { updateCard, readCard, readDeck, createCard } from "../utils/api";
 // import CardForm from "./CardForm";
 //This function will be used for filling out new flashcards as well as editting existing ones
 function CardForm() {
-    //initializing variables
+  //initializing variables
   const history = useHistory();
   const { deckId, cardId } = useParams();
   const [card, setCard] = useState();
@@ -12,8 +12,8 @@ function CardForm() {
   const initFormData = {
     front: "",
     back: "",
-}
-const [formData, setFormData] = useState(initFormData)    
+  };
+  const [formData, setFormData] = useState(initFormData);
   //useEffect to make calls to API
   useEffect(() => {
     async function getCard() {
@@ -22,27 +22,28 @@ const [formData, setFormData] = useState(initFormData)
       setDeck(deck);
       setCard(cardToEdit);
     }
-    if(cardId){
-      getCard();}
+    if (cardId) {
+      getCard();
+    }
   }, []);
   //NewCard Event handlers
   const doneHandler = (e) => {
     e.preventDefault();
-    history.push(`/decks/${deckId}`)
-    window.location.reload(true)
-}
+    history.push(`/decks/${deckId}`);
+    window.location.reload(true);
+  };
   const changeHandler = (e) => {
     e.preventDefault();
     setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
-    })
-}
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
   const newSubmitHandler = (e) => {
     e.preventDefault();
-    createCard(Number(deckId), formData)
-    setFormData(initFormData)
-}
+    createCard(Number(deckId), formData);
+    setFormData(initFormData);
+  };
   //EditCard EventHandlers
   const editHandler = (e) => {
     e.preventDefault();

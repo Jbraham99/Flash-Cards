@@ -15,16 +15,17 @@ function Deck() {
       setDeck(deck);
       setCards(deck.cards);
     }
-    getDeck();
+    if(deckId){
+      getDeck();}
   }, []);
   // console.log("deck from Deck: ", deck);
   // console.log("cards from Deck", cards);
   const deleteDeckHandler = (e) => {
     e.preventDefault();
-    if (window.confirm(`Are you sure you want to delete this deck?`)){
+    if (window.confirm(`Are you sure you want to delete this deck?`)) {
       deleteDeck(e.target.id);
       history.push("/");
-      window.location.reload(true);      
+      window.location.reload(true);
     }
   };
   const deleteCardHandler = (e) => {
@@ -56,7 +57,6 @@ function Deck() {
               <Link to={`/decks/${deck.id}/edit`}>
                 <button className="btn btn-secondary">Edit</button>
               </Link>
-
               <Link to={`/decks/${deck.id}/study`}>
                 <button className="btn btn-primary">Study</button>
               </Link>

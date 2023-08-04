@@ -12,8 +12,18 @@
     },
     {
       "name": "Epic",
-      "description": "Deck",
+      "description": "The most epic thing ever",
       "id": 3
+    },
+    {
+      "name": "hello",
+      "description": "there\n",
+      "id": 4
+    },
+    {
+      "name": "creating a deck",
+      "description": "It's gonna be epic!",
+      "id": 5
     }
   ],
   "cards": [
@@ -70,6 +80,48 @@
       "back": "backside, ayyye",
       "deckId": 3,
       "id": 11
+    },
+    {
+      "front": "epic",
+      "back": "fun",
+      "deckId": 4,
+      "id": 12
+    },
+    {
+      "front": "hey",
+      "back": "Mom",
+      "deckId": 4,
+      "id": 13
+    },
+    {
+      "front": "look at",
+      "back": "me",
+      "deckId": 4,
+      "id": 14
+    },
+    {
+      "front": "epic front side",
+      "back": "epic back side",
+      "deckId": 4,
+      "id": 15
+    },
+    {
+      "front": "wowza",
+      "back": "this is cool",
+      "deckId": 5,
+      "id": 16
+    },
+    {
+      "front": "only HALF WAY ",
+      "back": "THERE!",
+      "deckId": 5,
+      "id": 17
+    },
+    {
+      "front": "Now this is what you call a ",
+      "back": "bananza",
+      "deckId": 5,
+      "id": 18
     }
   ]
 }

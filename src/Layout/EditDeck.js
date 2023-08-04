@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
-import { updateDeck, readDeck } from "../utils/api";
+import { useParams, Link } from "react-router-dom";
+import { readDeck } from "../utils/api";
 function EditDeck() {
-  const history = useHistory();
   const { deckId } = useParams();
   const [deck, setDeck] = useState();
   useEffect(() => {
@@ -12,21 +11,6 @@ function EditDeck() {
     }
     getDeck();
   }, []);
-  const [formData, setFormData] = useState(deck);
-  const changeHandler = (e) => {
-    e.preventDefault();
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
-  };
-  const submitHandler = (e) => {
-    e.preventDefault();
-    updateDeck(formData);
-    history.push("/");
-    window.location.reload(true);
-  };
-  console.log("deck from EditDeck", deck);
   return (
     <React.Fragment>
       {deck ? (
@@ -43,7 +27,6 @@ function EditDeck() {
             </ol>
           </nav>
           <h2>Edit Deck</h2>
-          
         </div>
       ) : (
         <p>Loading...</p>

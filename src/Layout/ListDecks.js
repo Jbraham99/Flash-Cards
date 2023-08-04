@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import {Route, Link, useRouteMatch, Switch} from "react-router-dom";
-import { listDecks } from "../utils/api";
+import React from "react";
+import {Route, Link, useRouteMatch} from "react-router-dom";
 import DeckView from "./DeckView";
 
 function ListDecks({data}) {
