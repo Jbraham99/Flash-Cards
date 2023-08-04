@@ -1,17 +1,20 @@
 import React, {useEffect, useState} from "react";
+import {Route, Switch, useRouteMatch, BrowserRouter as Router} from "react-router-dom"
+import { listDecks } from "../utils/api";
+
 import Header from "./Header";
 import NotFound from "./NotFound";
-import {Route, Switch, useRouteMatch, BrowserRouter as Router} from "react-router-dom"
-import ListDecks from "./ListDecks"
-import StudyDeck from "./StudyDeck";
-import NewCards from "./NewCards";
-import CreateDeck from "./CreateDeck";
-import { listDecks } from "../utils/api";
-import Deck from "./Deck";
-import EditDeck from "./EditDeck";
-import EditCard from "./EditCard";
-import CardForm from "./CardForm";
 
+import Deck from "./Deck";
+import ListDecks from "./ListDecks"
+import CreateDeck from "./CreateDeck";
+import EditDeck from "./EditDeck";
+import DeckForm from "./DeckForm";
+
+import NewCards from "./NewCards";
+import CardForm from "./CardForm";
+import StudyDeck from "./StudyDeck";
+import EditCard from "./EditCard";
 
 function Layout() {
   const [data, setData] = useState([])
@@ -30,21 +33,26 @@ const {path, url} = useRouteMatch();
       <Header />
       <div className="container">
         {/* TODO: Implement the screen starting here */}
-        <Switch>
+        {data ? <Switch>
           <Route exact path="/">
             <ListDecks data={data} />
           </Route>
           
-          <Route path={`/decks/new`}>
-            <CreateDeck  setData={setData} /> 
+          <Route exact path={`/decks/new`}>
+            <CreateDeck  setData={setData} />
+            <DeckForm />
           </Route>
 
           <Route path="/decks/:deckId/study">
             <StudyDeck />
           </Route>
 
+          <Route exact path={`/decks/:deckId`}>
+            <Deck data={data} />
+          </Route>
+
           <Route path="/decks/:deckId/cards/new">
-            <NewCards  />
+          <NewCards  />
             <CardForm />
           </Route>
 
@@ -55,16 +63,13 @@ const {path, url} = useRouteMatch();
 
           <Route path="/decks/:deckId/edit">
             <EditDeck  />
-          </Route>
-
-          <Route path={`/decks/:deckId`}>
-              <Deck data={data} />
+            <DeckForm />
           </Route>
 
           <Route>
           <NotFound />
           </Route>
-        </Switch>
+        </Switch> : <p>Loading...</p>}
       </div>
     </React.Fragment>
   );

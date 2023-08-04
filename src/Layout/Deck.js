@@ -60,7 +60,7 @@ function Deck() {
               <Link to={`/decks/${deck.id}/study`}>
                 <button className="btn btn-primary">Study</button>
               </Link>
-              <Link to={`/decks/${deck.id}/cards/new`}>
+              <Link to={`/decks/${deckId}/cards/new`}>
                 <button className="btn btn-primary">➕ Add Cards</button>
               </Link>
             </div>

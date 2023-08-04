@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory, Link, Route } from "react-router-dom";
-import { updateCard, readCard, readDeck } from "../utils/api";
-import CardForm from "./CardForm";
+import { useParams, Link } from "react-router-dom";
+import {  readCard, readDeck } from "../utils/api";
 
 function EditCard() {
-    const history = useHistory();
     const {deckId, cardId} = useParams();
     const [card, setCard] = useState()
     const [deck, setDeck] = useState()
@@ -17,20 +15,6 @@ function EditCard() {
         }
         getCard()
     }, [])
-    // const [formData, setFormData] = useState(card)
-    const changeHandler = (e) => {
-        e.preventDefault();
-        setCard({
-            ...card,
-            [e.target.name]: e.target.value
-        })
-    }
-    const submitHandler = (e) => {
-        e.preventDefault();
-        updateCard(card)
-        history.push(`/decks/${Number(deckId)}`);
-        window.location.reload(true)
-    }
     return (
         <React.Fragment>
             {deck && card ? <nav aria-label="breadcrumb">

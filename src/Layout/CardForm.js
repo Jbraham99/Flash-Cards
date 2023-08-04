@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory, Link, Route } from "react-router-dom";
 import { updateCard, readCard, readDeck, createCard } from "../utils/api";
 // import CardForm from "./CardForm";
-
+//This function will be used for filling out new flashcards as well as editting existing ones
 function CardForm() {
+    //initializing variables
   const history = useHistory();
   const { deckId, cardId } = useParams();
   const [card, setCard] = useState();
@@ -13,6 +14,7 @@ function CardForm() {
     back: "",
 }
 const [formData, setFormData] = useState(initFormData)    
+  //useEffect to make calls to API
   useEffect(() => {
     async function getCard() {
       const deck = await readDeck(deckId);
@@ -20,11 +22,13 @@ const [formData, setFormData] = useState(initFormData)
       setDeck(deck);
       setCard(cardToEdit);
     }
-    getCard();
+    if(cardId){
+      getCard();}
   }, []);
+  //NewCard Event handlers
   const doneHandler = (e) => {
     e.preventDefault();
-    history.push("/")
+    history.push(`/decks/${deckId}`)
     window.location.reload(true)
 }
   const changeHandler = (e) => {
@@ -39,6 +43,7 @@ const [formData, setFormData] = useState(initFormData)
     createCard(Number(deckId), formData)
     setFormData(initFormData)
 }
+  //EditCard EventHandlers
   const editHandler = (e) => {
     e.preventDefault();
     setCard({
