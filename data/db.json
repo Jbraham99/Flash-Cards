@@ -11,8 +11,8 @@
       "id": 2
     },
     {
-      "name": "not so epic",
-      "description": "decki",
+      "name": "Epic",
+      "description": "Deck",
       "id": 3
     }
   ],
@@ -48,29 +48,28 @@
       "id": 5
     },
     {
-      "cards": [],
-      "front": "b",
-      "back": "b",
-      "deckId": 1,
-      "id": 7
-    },
-    {
       "front": "Lets put something:",
       "back": "useful here",
       "deckId": 2,
       "id": 8
     },
     {
-      "front": "epic",
-      "back": "card",
+      "front": "hello",
+      "back": "goodbye",
       "deckId": 3,
-      "id": 11
+      "id": 9
     },
     {
-      "front": "hello",
-      "back": "Goodbye",
+      "front": "goodbye",
+      "back": "hello",
       "deckId": 3,
-      "id": 13
+      "id": 10
+    },
+    {
+      "front": "frontside",
+      "back": "backside, ayyye",
+      "deckId": 3,
+      "id": 11
     }
   ]
 }

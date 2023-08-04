@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
 import {Link, useRouteMatch, useHistory} from "react-router-dom"
+import { createDeck, listDecks } from "../utils/api";
 
-import { createDeck } from "../utils/api";
-function CreateDeck({data, setData}) {//I DON'T KNOW IF I NEED THESE PROPS YET!!
-    console.log("createDeck Data", data)
+function CreateDeck() {//I DON'T KNOW IF I NEED THESE PROPS YET!!
     const history = useHistory();
     const initFormData = {
         name: "",
         description: ""
     }
     const [formData, setFormData] = useState(initFormData)
+    const [deckID, setDeckID] = useState(null)
+    useEffect(()=>{
+        async function getDecksLength() {
+            const deckList = await listDecks();
+            setDeckID(deckList.length + 1)
+        }
+        getDecksLength()
+    }, [])
+    console.log("DeckLength:", deckID)
     const cancelHandler = (e) => {
         e.preventDefault();
         console.log("form canceled")
@@ -26,12 +34,18 @@ function CreateDeck({data, setData}) {//I DON'T KNOW IF I NEED THESE PROPS YET!!
     const submitHandler = (e) => {
         e.preventDefault();
         createDeck(formData)
-        history.push("/")
+        history.push(`/decks/${deckID}`)
         window.location.reload(true)
     }
     console.log(formData)
     return (
         <div>
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><Link to="/">🏠 Home</Link></li>
+                    <li className="breadcrumb-item active">Create Deck</li>
+                </ol>
+            </nav>
             <h2>Create Deck</h2>
             <form onSubmit={submitHandler}>
                 <label htmlFor="name">Name</label>

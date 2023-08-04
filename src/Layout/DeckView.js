@@ -4,12 +4,23 @@ import { deleteDeck, deleteCard } from "../utils/api";
 function DeckView({deck}) {
     const deleteHandler = (e) => {
         e.preventDefault();
-        deleteDeck(e.target.id)
-        window.location.reload(true)
+        if(window.confirm(`Are you sure you would like to delete this deck?`)) {
+            deleteDeck(e.target.id);
+            window.location.reload(true)
+        }
+        
     }
     return (
         <div className="border">
-            <h2>{deck.name}</h2>
+            <div className="row">
+                <div className="col">
+                    <h2>{deck.name}</h2>
+                </div>
+                <div className="col">
+                    <p>{deck.cards.length} cards</p>
+                </div> 
+            </div>
+            
             <p>{deck.description}</p>
             <div className="row">
             <div className="col">

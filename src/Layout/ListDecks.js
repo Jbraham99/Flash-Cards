@@ -4,7 +4,7 @@ import { listDecks } from "../utils/api";
 import DeckView from "./DeckView";
 
 function ListDecks({data}) {
-    const {path, url} = useRouteMatch();
+    const {path} = useRouteMatch();
     return (
         <div>
             <Route exact path={path}>

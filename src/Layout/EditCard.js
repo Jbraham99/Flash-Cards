@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useParams, useHistory, Link, Route } from "react-router-dom";
 import { updateCard, readCard, readDeck } from "../utils/api";
+import CardForm from "./CardForm";
 
-function EditCard({data}) {
+function EditCard() {
     const history = useHistory();
     const {deckId, cardId} = useParams();
     const [card, setCard] = useState()
     const [deck, setDeck] = useState()
     useEffect(()=>{
         async function getCard() {
-            const card = await readCard(cardId);
-            setCard(card)
+            const deck = await readDeck(deckId);
+            const cardToEdit = await readCard(cardId)
+            setDeck(deck)
+            setCard(cardToEdit)
         }
         getCard()
     }, [])
-    
-    console.log(card)
     // const [formData, setFormData] = useState(card)
     const changeHandler = (e) => {
         e.preventDefault();
@@ -32,23 +33,15 @@ function EditCard({data}) {
     }
     return (
         <React.Fragment>
-            <h2>Edit Card</h2>
-            {card ? <form onSubmit={submitHandler}>
-                <label htmlFor="front">Front</label>
-                <div>
-                    <textarea name="front" id="front" onChange={changeHandler} value={card.front}></textarea>
-                </div>
-                <label htmlFor="back">Back</label>
-                <div>
-                    <textarea name="back" id="back" onChange={changeHandler} value={card.back}></textarea>
-                </div>
-                <Link to={`/decks/${Number(deckId)}`}>
-                    <button className="btn btn-secondary">Cancel</button>
-                </Link>
-                
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form> : <p>Loading...</p>}
+            {deck && card ? <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                    <li className="breadcrumb-item"><Link to={`/decks/${deck.id}`}>{deck.name} deck</Link></li>
+                    <li className="breadcrumb-item active">{`Edit Card: ${card.id}`}</li>
+                </ol>
+            </nav> : <p>Loading...</p>}
             
+            <h2>Edit Card</h2>
         </React.Fragment>
     )
 }

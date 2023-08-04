@@ -10,6 +10,7 @@ import { listDecks } from "../utils/api";
 import Deck from "./Deck";
 import EditDeck from "./EditDeck";
 import EditCard from "./EditCard";
+import CardForm from "./CardForm";
 
 
 function Layout() {
@@ -23,9 +24,9 @@ function Layout() {
     getData()
   }, [])
 const {path, url} = useRouteMatch();
-console.log(path)
+// console.log(path) Path = "/"
   return (
-    <Router>
+    <React.Fragment>
       <Header />
       <div className="container">
         {/* TODO: Implement the screen starting here */}
@@ -35,23 +36,25 @@ console.log(path)
           </Route>
           
           <Route path={`/decks/new`}>
-            <CreateDeck data={data} setData={setData} /> 
+            <CreateDeck  setData={setData} /> 
           </Route>
 
           <Route path="/decks/:deckId/study">
-            <StudyDeck data={data}/>
+            <StudyDeck />
           </Route>
 
           <Route path="/decks/:deckId/cards/new">
-            <NewCards data={data} />
+            <NewCards  />
+            <CardForm />
           </Route>
 
           <Route path="/decks/:deckId/cards/:cardId/edit">
-            <EditCard data={data} />
+            <EditCard  />
+            <CardForm />
           </Route>
 
           <Route path="/decks/:deckId/edit">
-            <EditDeck data={data} />
+            <EditDeck  />
           </Route>
 
           <Route path={`/decks/:deckId`}>
@@ -63,7 +66,7 @@ console.log(path)
           </Route>
         </Switch>
       </div>
-    </Router>
+    </React.Fragment>
   );
 }
 
