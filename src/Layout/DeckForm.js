@@ -92,7 +92,9 @@ function DeckForm() {
               value={editFormData.description}
             ></textarea>
           </div>
+          <Link to={`/decks/${deckId}`}>
           <button className="btn btn-secondary">Cancel</button>
+          </Link>
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
