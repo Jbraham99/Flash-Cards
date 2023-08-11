@@ -61,11 +61,10 @@ function DeckForm() {
     });
   };
   // console.log(editFormData)
-  const editSubmitHandler = (e) => {
+  const editSubmitHandler = async (e) => {
     e.preventDefault();
-    updateDeck(editFormData);
+    await updateDeck(editFormData);
     history.push(`/decks/${deckId}`);
-    window.location.reload(true);
   };
   return (
     <React.Fragment>

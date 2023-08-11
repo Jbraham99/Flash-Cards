@@ -11,18 +11,18 @@
       "id": 2
     },
     {
-      "name": "Epic",
-      "description": "The most epic thing ever",
+      "name": "Epic Deck of card",
+      "description": "The most super epic deck ever the second time",
       "id": 3
     },
     {
       "name": "hello",
-      "description": "there\n",
+      "description": "there",
       "id": 4
     },
     {
-      "name": "creating a deck",
-      "description": "It's gonna be epic!",
+      "name": "Edit Deck Page",
+      "description": "This Deck is Epic Edition Page",
       "id": 5
     }
   ],
@@ -64,20 +64,20 @@
       "id": 8
     },
     {
-      "front": "hello",
-      "back": "goodbye",
+      "front": "hello there",
+      "back": "goodbye there",
       "deckId": 3,
       "id": 9
     },
     {
-      "front": "goodbye",
-      "back": "hello",
+      "front": "goodbye now",
+      "back": "hello now",
       "deckId": 3,
       "id": 10
     },
     {
-      "front": "frontside",
-      "back": "backside, ayyye",
+      "front": "frontside flip",
+      "back": "backside nose-grind, ayyye",
       "deckId": 3,
       "id": 11
     },
@@ -101,7 +101,7 @@
     },
     {
       "front": "epic front side",
-      "back": "epic back side",
+      "back": "epic back side nose grind ayye",
       "deckId": 4,
       "id": 15
     },
